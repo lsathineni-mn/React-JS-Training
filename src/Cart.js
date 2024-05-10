@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Card,Image,Row } from "antd";
  function Cart() {
 
@@ -16,7 +17,10 @@ import { Button, Card,Image,Row } from "antd";
       setCakes(response.data.data)});
   }, []);
 
-  
+  if(localStorage.getItem('token')==undefined){
+    navigate("/login")
+    return(<><h2>please login</h2></>);
+  }
 
   return (
     <div>
